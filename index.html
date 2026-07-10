@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corsário's Fortune — Alpha 0.01</title>
+<meta name="description" content="Um jogo idle/incremental de piratas e corsários, inspirado em Trimps.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+    <header class="game-header">
+      <div class="game-title">🏴‍☠️ Corsário's Fortune</div>
+      <p class="game-subtitle">Alpha 0.01 — um idle/incremental de piratas e corsários</p>
+      <div id="status-strip">
+        <span id="crew-summary"></span>
+        <span id="rank-summary"></span>
+      </div>
+    </header>
+
+    <div id="resource-bar"></div>
+    <nav id="tab-nav"></nav>
+    <main id="tab-content"></main>
+
+    <div id="log-panel">
+      <div id="log-box"></div>
+    </div>
+  </div>
+
+  <div id="modal-container"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/ui.js"></script>
+</body>
+</html>

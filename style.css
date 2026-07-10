@@ -1,0 +1,255 @@
+/* ============================================================
+   Corsário's Fortune — Alpha 0.01
+   Paleta: noite de mar profundo + pergaminho envelhecido + latão.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&family=Crimson+Pro:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
+:root {
+  --sea-black: #0b1615;
+  --sea-deep: #10201f;
+  --sea-panel: #162726;
+  --sea-panel-2: #1c2f2d;
+  --parchment: #e9dcb8;
+  --parchment-dim: #cdbf98;
+  --brass: #c9a24b;
+  --brass-bright: #e8c46a;
+  --rust: #a5432f;
+  --rust-bright: #d15c3f;
+  --teal-line: #2a4744;
+  --ok-green: #5fbf6b;
+  --font-display: 'Pirata One', cursive;
+  --font-body: 'Crimson Pro', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 20% -10%, rgba(201,162,75,0.08), transparent 45%),
+    radial-gradient(ellipse at 90% 110%, rgba(165,67,47,0.10), transparent 50%),
+    var(--sea-black);
+  color: var(--parchment);
+  font-family: var(--font-body);
+  font-size: 16px;
+}
+
+#app { max-width: 1100px; margin: 0 auto; padding: 16px 16px 60px; }
+
+/* ---------- Cabeçalho ---------- */
+
+.game-header { text-align: center; margin-bottom: 14px; }
+.game-title {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  letter-spacing: 1px;
+  color: var(--brass-bright);
+  text-shadow: 0 2px 0 rgba(0,0,0,0.5), 0 0 24px rgba(201,162,75,0.25);
+  margin: 6px 0 2px;
+}
+.game-subtitle { color: var(--parchment-dim); font-style: italic; margin: 0 0 10px; }
+
+#status-strip {
+  display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: center;
+  font-size: 0.95rem; color: var(--parchment-dim); margin-bottom: 10px;
+}
+.class-tag { padding: 1px 8px; border-radius: 10px; font-size: 0.75rem; margin-left: 6px; border: 1px solid var(--brass); }
+.class-tag.class-pirate { border-color: var(--rust-bright); color: var(--rust-bright); }
+.class-tag.class-corsair { border-color: #4f9dff; color: #4f9dff; }
+.class-tag.class-none { color: var(--parchment-dim); }
+
+/* ---------- Barra de recursos ---------- */
+
+#resource-bar {
+  display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;
+  background: linear-gradient(180deg, var(--sea-panel), var(--sea-panel-2));
+  border: 1px solid var(--teal-line);
+  border-radius: 10px;
+  padding: 8px 10px;
+  margin-bottom: 12px;
+}
+.res-chip {
+  display: flex; align-items: center; gap: 5px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(201,162,75,0.25);
+  border-radius: 8px;
+  padding: 4px 9px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+.res-chip.res-doubloon { border-color: var(--brass-bright); background: rgba(201,162,75,0.15); color: var(--brass-bright); font-weight: 600; }
+
+/* ---------- Abas ---------- */
+
+#tab-nav { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; justify-content: center; }
+.tab-btn {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 8px 14px;
+  background: var(--sea-panel);
+  border: 1px solid var(--teal-line);
+  color: var(--parchment-dim);
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.tab-btn:hover { background: var(--sea-panel-2); color: var(--parchment); }
+.tab-btn.active { background: var(--brass); color: #1a1108; font-weight: 700; border-color: var(--brass); }
+
+/* ---------- Painéis ---------- */
+
+.panel {
+  background: linear-gradient(180deg, rgba(233,220,184,0.05), rgba(0,0,0,0.15));
+  border: 1px solid var(--teal-line);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+.panel h2 {
+  font-family: var(--font-display);
+  color: var(--brass-bright);
+  font-size: 1.5rem;
+  margin: 0 0 10px;
+  letter-spacing: 0.5px;
+}
+.panel h3 { color: var(--brass); margin: 0 0 8px; }
+.muted { color: var(--parchment-dim); font-size: 0.9em; }
+
+/* ---------- Botões ---------- */
+
+.btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--brass);
+  background: linear-gradient(180deg, var(--brass-bright), var(--brass));
+  color: #1a1108;
+  cursor: pointer;
+  transition: transform 0.1s, filter 0.15s;
+}
+.btn:hover:not(:disabled) { filter: brightness(1.08); }
+.btn:active:not(:disabled) { transform: translateY(1px); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; filter: grayscale(0.4); }
+.btn.small { padding: 5px 10px; font-size: 0.85rem; }
+.btn.tiny { padding: 2px 8px; font-size: 0.78rem; border-radius: 4px; }
+.btn.ghost { background: transparent; color: var(--parchment); }
+.btn.danger { background: linear-gradient(180deg, var(--rust-bright), var(--rust)); border-color: var(--rust); color: #fff; }
+
+/* ---------- Frota ---------- */
+
+.fleet-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+.ship-card { background: rgba(0,0,0,0.2); border: 1px solid var(--teal-line); border-radius: 8px; padding: 10px 12px; }
+.ship-card-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+.role-select { background: var(--sea-panel-2); color: var(--parchment); border: 1px solid var(--teal-line); border-radius: 4px; padding: 3px 6px; font-family: var(--font-body); }
+.ship-slots { display: flex; flex-direction: column; gap: 4px; }
+.slot { border: 1px solid var(--teal-line); border-radius: 4px; padding: 4px 8px; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; }
+.slot.empty { color: var(--parchment-dim); border-style: dashed; }
+
+.ship-type-list { display: flex; flex-direction: column; gap: 6px; }
+.ship-type-row { display: grid; grid-template-columns: 1.4fr 1fr 1.4fr auto; gap: 10px; align-items: center; padding: 6px 8px; border-radius: 6px; background: rgba(0,0,0,0.15); }
+.ship-type-row.locked { opacity: 0.5; }
+.ship-type-cost { font-family: var(--font-mono); font-size: 0.82rem; }
+
+.crew-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.crew-label { flex: 1; }
+.crew-count { font-family: var(--font-mono); min-width: 30px; text-align: center; font-weight: 700; }
+
+/* ---------- Ilha ---------- */
+
+.building-list { display: flex; flex-direction: column; gap: 8px; }
+.building-row { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; padding: 8px; background: rgba(0,0,0,0.15); border-radius: 6px; }
+.building-row.locked { opacity: 0.45; }
+.building-icon { font-size: 1.6rem; }
+.building-name { font-weight: 600; color: var(--brass-bright); }
+.building-desc { font-size: 0.85rem; color: var(--parchment-dim); }
+.building-action { text-align: right; }
+.cost { font-family: var(--font-mono); font-size: 0.8rem; margin-bottom: 4px; }
+
+/* ---------- Exploração ---------- */
+
+.island-card { background: rgba(0,0,0,0.2); border: 1px solid var(--teal-line); border-radius: 8px; padding: 14px; }
+.island-card.boss { border-color: var(--rust-bright); background: rgba(165,67,47,0.12); }
+.island-name { font-family: var(--font-display); font-size: 1.4rem; color: var(--brass-bright); margin-bottom: 6px; }
+.island-stats { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 10px; font-family: var(--font-mono); font-size: 0.9rem; }
+.progress-bar { background: rgba(0,0,0,0.4); border-radius: 6px; height: 14px; overflow: hidden; border: 1px solid var(--teal-line); }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--rust), var(--brass-bright)); transition: width 0.2s; }
+
+/* ---------- Missões / Contratos ---------- */
+
+.quest-list { display: flex; flex-direction: column; gap: 8px; }
+.quest-row { display: grid; grid-template-columns: 2fr 1fr auto; gap: 10px; align-items: center; padding: 8px 10px; background: rgba(0,0,0,0.15); border-radius: 6px; }
+.quest-row.done { border: 1px solid var(--ok-green); }
+.quest-reward { font-family: var(--font-mono); font-size: 0.85rem; }
+
+/* ---------- Inventário ---------- */
+
+.item-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+.item-card { border: 1px solid; border-radius: 8px; padding: 10px; background: rgba(0,0,0,0.2); }
+.item-name { font-weight: 700; margin-bottom: 4px; }
+.item-meta { font-size: 0.82rem; color: var(--parchment-dim); margin-bottom: 8px; }
+.item-actions { display: flex; gap: 6px; }
+
+/* ---------- Prestígio ---------- */
+
+.trees-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.tree-panel { background: rgba(0,0,0,0.2); border: 1px solid var(--teal-line); border-radius: 8px; padding: 10px 12px; }
+.tree-panel.locked { opacity: 0.5; }
+.node-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px dashed var(--teal-line); }
+.node-row:last-child { border-bottom: none; }
+.node-name { font-weight: 600; }
+.node-desc { font-size: 0.8rem; color: var(--parchment-dim); }
+
+.relic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
+.relic-card { border: 1px solid var(--teal-line); border-radius: 8px; padding: 10px; text-align: center; background: rgba(0,0,0,0.15); }
+.relic-card.owned { border-color: var(--brass-bright); background: rgba(201,162,75,0.1); }
+.relic-icon { font-size: 1.8rem; }
+.relic-name { font-weight: 700; margin: 4px 0 2px; color: var(--brass-bright); }
+.relic-desc { font-size: 0.8rem; color: var(--parchment-dim); }
+
+/* ---------- Log ---------- */
+
+#log-panel {
+  position: sticky; bottom: 0;
+  background: linear-gradient(0deg, var(--sea-black) 60%, transparent);
+  padding-top: 16px;
+}
+#log-box {
+  max-height: 130px; overflow-y: auto;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid var(--teal-line);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  color: var(--parchment-dim);
+}
+.log-line { padding: 2px 0; border-bottom: 1px dashed rgba(255,255,255,0.05); }
+.log-line:last-child { border-bottom: none; }
+
+/* ---------- Modal ---------- */
+
+#modal-container { position: fixed; inset: 0; display: none; z-index: 50; }
+#modal-container.visible { display: block; }
+.modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.65); display: flex; align-items: center; justify-content: center; padding: 20px; }
+.modal-box { background: var(--sea-panel); border: 1px solid var(--brass); border-radius: 12px; padding: 24px; max-width: 560px; width: 100%; }
+.modal-box h2 { font-family: var(--font-display); color: var(--brass-bright); font-size: 1.8rem; margin-top: 0; }
+.class-choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+.class-choice { border: 1px solid var(--teal-line); border-radius: 8px; padding: 12px; text-align: center; }
+.class-choice h3 { margin-top: 0; }
+
+/* ---------- Responsivo ---------- */
+
+@media (max-width: 640px) {
+  .game-title { font-size: 2rem; }
+  .ship-type-row { grid-template-columns: 1fr; }
+  .quest-row { grid-template-columns: 1fr; }
+  .building-row { grid-template-columns: auto 1fr; }
+  .building-action { grid-column: 1 / -1; text-align: left; }
+  .class-choice-grid { grid-template-columns: 1fr; }
+}
+
+:focus-visible { outline: 2px solid var(--brass-bright); outline-offset: 2px; }
