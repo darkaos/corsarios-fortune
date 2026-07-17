@@ -253,3 +253,201 @@ body {
 }
 
 :focus-visible { outline: 2px solid var(--brass-bright); outline-offset: 2px; }
+
+/* ---------- v0.0.2: Náufrago ---------- */
+
+.castaway-panel { text-align: center; }
+.castaway-resources { display: flex; justify-content: center; gap: 24px; font-family: var(--font-mono); font-size: 1.3rem; margin: 14px 0; }
+.castaway-gather-row { display: flex; justify-content: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+.castaway-gather { font-size: 1.05rem; padding: 14px 22px; }
+.castaway-upgrades { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.castaway-divider { border: none; border-top: 1px dashed var(--teal-line); margin: 14px 0; }
+
+/* ---------- v0.0.2: Gate de idioma ---------- */
+
+#modal-container.gate { display: block; }
+.lang-choice-grid { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+
+/* ---------- v0.0.2: Abas bloqueadas / patente clicável ---------- */
+
+.tab-btn.locked { opacity: 0.4; cursor: not-allowed; }
+.tab-btn.settings-btn { margin-left: auto; }
+.rank-chip { background: none; border: none; color: var(--brass-bright); font-family: var(--font-body); font-weight: 700; cursor: pointer; padding: 0; text-decoration: underline dotted; font-size: 1em; }
+.btn.active-lang { outline: 2px solid var(--brass-bright); }
+
+/* ---------- v0.0.2: Modal de Patentes ---------- */
+
+.rank-list { display: flex; flex-direction: column; gap: 4px; max-height: 50vh; overflow-y: auto; margin: 12px 0; }
+.rank-row { display: flex; justify-content: space-between; padding: 6px 10px; border-radius: 6px; background: rgba(0,0,0,0.15); opacity: 0.5; }
+.rank-row.done { opacity: 1; }
+.rank-row.current { border: 1px solid var(--brass-bright); background: rgba(201,162,75,0.12); }
+
+/* ---------- v0.0.2: Mapa de Exploração ---------- */
+
+.map-track { display: flex; flex-wrap: wrap; gap: 4px; margin: 10px 0 16px; }
+.map-cell { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: 6px; font-size: 1.1rem; background: rgba(0,0,0,0.25); border: 1px solid var(--teal-line); }
+.map-cell.unknown { opacity: 0.35; }
+.map-cell.peek { opacity: 0.6; border-style: dashed; }
+.map-cell.current { border: 2px solid var(--brass-bright); background: rgba(201,162,75,0.2); transform: scale(1.1); }
+.map-cell.done.enemy, .map-cell.current.enemy { border-color: var(--rust-bright); }
+.map-cell.done.boss, .map-cell.current.boss { border-color: var(--rust-bright); background: rgba(165,67,47,0.2); }
+.map-cell.done.loot, .map-cell.current.loot { border-color: var(--brass-bright); }
+.map-cell.done { opacity: 0.55; }
+
+.quest-row.pool { border: 1px dashed var(--teal-line); }
+
+/* ---------- v0.0.3: Temas visuais ---------- */
+/* O tema é aplicado via [data-theme] no <body>; "dark" usa as variáveis padrão do :root. */
+
+body[data-theme="light"] {
+  --sea-black: #f4efe4; --sea-deep: #ffffff; --sea-panel: #ffffff; --sea-panel-2: #f0ead9;
+  --parchment: #2b2117; --parchment-dim: #6b5d47; --brass: #a8783a; --brass-bright: #8a5a1e;
+  --rust: #a5432f; --rust-bright: #c0472e; --teal-line: #d8cbab;
+}
+body[data-theme="light"] .btn { color: #fff; }
+body[data-theme="light"] .tab-btn.active { color: #fff; }
+
+body[data-theme="sepia"] {
+  --sea-black: #ece0c6; --sea-deep: #f3e9d0; --sea-panel: #f3e9d0; --sea-panel-2: #e8dab8;
+  --parchment: #4a3520; --parchment-dim: #7a6242; --brass: #8f6a2e; --brass-bright: #b3841f;
+  --rust: #8a3a26; --rust-bright: #a8462e; --teal-line: #d3c19a;
+}
+body[data-theme="sepia"] .btn { color: #fff2df; }
+body[data-theme="sepia"] .tab-btn.active { color: #fff2df; }
+
+/* ---------- v0.0.3: Banners de dica de tutorial ---------- */
+
+.hint-banner {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  background: rgba(201,162,75,0.12); border: 1px solid var(--brass); border-radius: 8px;
+  padding: 10px 14px; margin-bottom: 14px;
+}
+.hint-text { font-size: 0.92rem; }
+
+/* ---------- v0.0.3: Configurações (tema/idioma ativo, changelog) ---------- */
+
+.btn.active-choice { outline: 2px solid var(--brass-bright); }
+.changelog-list { max-height: 40vh; overflow-y: auto; }
+.changelog-entry { margin-bottom: 14px; }
+.changelog-entry h4 { color: var(--brass-bright); margin: 0 0 6px; }
+.changelog-entry ul { margin: 0; padding-left: 20px; font-size: 0.88rem; color: var(--parchment-dim); }
+.changelog-entry li { margin-bottom: 3px; }
+
+/* ---------- v0.0.3: Navio Principal / Frota de Apoio ---------- */
+
+.slot.locked { color: var(--parchment-dim); border-style: dotted; opacity: 0.7; }
+
+/* ---------- v0.0.4: Tema Branco ---------- */
+/* v0.1.0: trocada a fonte decorativa (Pirata One) por uma sans-serif limpa
+   neste tema — no fundo branco ela ficava difícil de ler. O título grande
+   do topo mantém um pouco do estilo pirata, só que mais grosso e legível. */
+
+body[data-theme="white"] {
+  --sea-black: #ffffff; --sea-deep: #ffffff; --sea-panel: #f7f8fa; --sea-panel-2: #eef0f3;
+  --parchment: #1c2024; --parchment-dim: #4a5058; --brass: #8a6108; --brass-bright: #7a5500;
+  --rust: #c0392b; --rust-bright: #d35043; --teal-line: #dfe2e7;
+  --font-display: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+}
+body[data-theme="white"] .btn { color: #fff; }
+body[data-theme="white"] .tab-btn.active { color: #fff; }
+body[data-theme="white"] .game-title { text-shadow: none; font-weight: 800; letter-spacing: -0.5px; }
+body[data-theme="white"] .panel h2, body[data-theme="white"] .panel h3,
+body[data-theme="white"] .island-name, body[data-theme="white"] .modal-box h2 { font-weight: 700; }
+
+/* ---------- v0.0.4: Banner de Evento Mundial ---------- */
+
+#world-event-banner {
+  display: none; text-align: center; padding: 8px 14px; margin-bottom: 10px;
+  background: linear-gradient(90deg, rgba(165,67,47,0.18), rgba(201,162,75,0.18));
+  border: 1px solid var(--brass-bright); border-radius: 8px; font-size: 0.92rem;
+}
+.we-timer { font-family: var(--font-mono); margin-left: 8px; color: var(--brass-bright); }
+
+/* ---------- v0.0.4: Árvore de Melhorias ---------- */
+
+.upgrade-tree { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 8px; }
+.upgrade-col { display: flex; flex-direction: column; gap: 10px; min-width: 220px; }
+.upgrade-node { border: 1px solid var(--teal-line); border-radius: 8px; padding: 10px; background: rgba(0,0,0,0.15); }
+.upgrade-node.bought { border-color: var(--ok-green); background: rgba(95,191,107,0.1); }
+.upgrade-node.locked { opacity: 0.55; }
+.upgrade-node.perma { border-color: var(--brass-bright); }
+.upgrade-node-head { font-weight: 700; margin-bottom: 4px; }
+.upgrade-node-desc { font-size: 0.82rem; color: var(--parchment-dim); margin-bottom: 8px; }
+.perma-tag { font-size: 0.65rem; background: var(--brass-bright); color: #1a1108; padding: 1px 5px; border-radius: 4px; vertical-align: middle; }
+.node-status { font-size: 0.8rem; }
+.node-status.bought { color: var(--ok-green); font-weight: 700; }
+.node-status.locked { color: var(--parchment-dim); font-style: italic; }
+
+/* ---------- v0.0.4: Facções ---------- */
+
+.faction-list { display: flex; flex-direction: column; gap: 10px; }
+.faction-label { margin-bottom: 3px; font-size: 0.9rem; }
+.faction-bar { background: rgba(0,0,0,0.3); border-radius: 6px; height: 10px; overflow: hidden; border: 1px solid var(--teal-line); }
+.faction-bar-fill { height: 100%; background: linear-gradient(90deg, var(--rust), var(--brass-bright)); }
+
+/* ---------- v0.0.4: Banners de Chefe / Evento no mapa ---------- */
+
+.boss-banner, .event-banner {
+  text-align: center; padding: 8px 12px; margin-bottom: 10px; border-radius: 8px;
+  background: rgba(165,67,47,0.12); border: 1px solid var(--rust-bright);
+}
+.event-banner { background: rgba(201,162,75,0.12); border-color: var(--brass-bright); }
+.boss-icon { font-size: 1.3rem; }
+.automation-note { background: rgba(95,191,107,0.1); border: 1px solid var(--ok-green); border-radius: 6px; padding: 6px 10px; margin-bottom: 6px; }
+
+/* ---------- v0.0.5: Conquistas ---------- */
+
+.achievement-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
+.achievement-card { border: 1px solid var(--teal-line); border-radius: 8px; padding: 12px; text-align: center; background: rgba(0,0,0,0.15); }
+.achievement-card.done { border-color: var(--brass-bright); background: rgba(201,162,75,0.1); }
+.achievement-card.locked { opacity: 0.5; }
+.achievement-icon { font-size: 1.8rem; }
+.achievement-name { font-weight: 700; margin: 4px 0 2px; color: var(--brass-bright); }
+.achievement-desc { font-size: 0.8rem; color: var(--parchment-dim); margin-bottom: 6px; }
+.achievement-bonus { font-family: var(--font-mono); font-size: 0.78rem; color: var(--ok-green); }
+
+
+/* ---------- v0.1.3: Captain's Log / Community ---------- */
+.journal-panel { max-width: 900px; margin: 0 auto; }
+.journal-act { margin-top: 18px; }
+.journal-act h3 { color: var(--brass-bright); border-bottom: 1px solid var(--teal-line); padding-bottom: 6px; }
+.journal-entry { padding: 12px 14px; margin: 10px 0; border-left: 3px solid var(--brass); background: rgba(0,0,0,0.12); border-radius: 0 8px 8px 0; }
+.journal-entry-title { font-weight: 700; color: var(--brass-bright); margin-bottom: 6px; }
+.journal-entry p { margin: 0; line-height: 1.65; white-space: normal; }
+.story-act-modal { text-align: center; max-width: 620px; }
+.story-act-kicker { letter-spacing: 0.14em; font-size: 0.78rem; color: var(--brass-bright); font-weight: 700; }
+.story-act-quote { font-size: 1.05rem; line-height: 1.7; font-style: italic; }
+.community-links { display: flex; gap: 10px; flex-wrap: wrap; }
+.community-link { display: inline-flex; align-items: center; gap: 8px; padding: 9px 13px; border: 1px solid var(--teal-line); border-radius: 8px; color: var(--parchment); text-decoration: none; background: rgba(0,0,0,0.12); }
+.community-link:hover { border-color: var(--brass-bright); color: var(--brass-bright); }
+
+
+/* Alpha 0.1.3.2 — compras múltiplas de construções */
+.building-buy-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+
+/* Alpha 0.1.3.3 — Warehouse and narrative actions */
+.warehouse-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.8rem;
+  align-items: center;
+  margin: 0.7rem 0;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--border, rgba(255,255,255,.15));
+  border-radius: 8px;
+}
+.warehouse-summary span { white-space: nowrap; }
+.story-act-actions {
+  display: flex;
+  gap: .6rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: .8rem;
+}
